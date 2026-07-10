@@ -1,0 +1,83 @@
+"student_id","first_name","last_name","age","gender","course","enrollment_date","total_payment"
+1,Esther,Adams,21,M,Data Science,2022-06-25,£669.00
+2,Alexander,Davis,21,M,Data Science,2022-07-05,£683.86
+3,Emeka,Okafor,24,M,Data Science,2022-01-10,£706.16
+4,David,Davis,20,M,Web Development,2021-09-10,£706.16
+5,Ibrahim,Okafor,22,M,Data Science,2022-02-03,£706.16
+6,Daniel,White,24,M,Web Development,2021-10-30,£721.03
+7,Brian,Wilson,19,M,Data Science,2022-07-02,£743.33
+8,Ben,Thompson,20,M,Web Development,2022-11-14,£780.50
+9,Zainab,Abiodun,23,F,Web Development,2022-07-21,£780.50
+10,Jackson,Murphy,21,M,Web Development,2023-06-05,£780.50
+11,Ada,Adeleke,23,F,Data Science,NULL,£817.66
+12,Nasiru,Adebayo,24,M,Data Science,2022-05-09,£832.53
+13,Harper,Rodriguez,22,F,Data Science,NULL,£832.53
+14,Chinyere,Nwosu,26,F,Data Science,2023-02-28,£854.83
+15,Chukwudi,Ogechi Ogundipe,22,M,Data Science,2022-05-15,£891.99
+16,Amanda,Taylor,22,F,Machine Learning,2022-08-15,£891.99
+17,Amina,Adekunle,21,F,Machine Learning,2022-08-12,£944.03
+18,Emily,Murphy,21,F,Machine Learning,2023-08-02,£944.03
+19,Aisha,Okonkwo,25,F,Machine Learning,2023-01-15,£966.33
+20,Amara,Okonkwo,25,F,Machine Learning,2022-04-22,£966.33
+21,Chinwe,Okoye,23,F,Machine Learning,2022-09-20,"£1,003.49"
+22,Emily,Emodi,24,F,Machine Learning,2022-03-18,"£1,040.66"
+23,Esther,Naomi,21,F,Machine Learning,2022-08-01,"£20,000.00"
+24,Kylian,Eden,NULL,M,Machine Learning,2024-08-01,"£20,000.00"
+25,Joseph,Williams,22,F,Machine Learning,2023-08-01,"£20,000.00"
+26,Davis,Brown,25,M,Data Analysis,2023-05-09,"£20,000.00"
+27,Lay,Martin,22,M,Web Development,2024-08-01,"£20,000.00"
+28,Anita,West,24,F,NULL,2020-05-01,"£30,000.00"
+29,Olawale,Akintola,20,M,Web Development,2021-05-08,"£30,000.00"
+30,Wike,Akintola,25,M,NULL,2022-06-05,"£36,000.00"
+31,Ayodele,NULL,18,F,Machine Learning,2023-08-09,"£37,440.00"
+32,NULL,NULL,25,M,NULL,2022-09-09,"£37,488.00"
+33,NULL,NULL,25,F,NULL,2021-10-09,"£37,497.60"
+34,NULL,Leke,21,M,NULL,2023-07-09,"£40,000.00"
+35,Adeniran,Omoshola,22,F,Data Analysis,2021-07-01,"£50,000.00"
+36,Iwueze,Olaoluwa,23,M,Data Analysis,2020-07-10,"£55,000.00"
+37,Faramotu,Ismail,23,M,Data Analysis,2020-07-16,"£60,500.00"
+38,Ifarele,Adeola,23,M,Data Analysis,2022-08-30,"£66,550.00"
+39,Folorunsho,Dada,22,M,Web Development,2022-07-01,"£73,205.00"
+40,Ikechukwu,Victor,22,M,Web Development,2024-07-01,"£80,526.00"
+41,Ahmed,Mohammed,23,F,Web Development,2021-07-19,"£88,578.00"
+42,Binta,Sanni,22,F,Web Development,2021-07-01,"£97,436.00"
+43,Chukwu,Ike,22,M,Web Development,2022-07-01,"£107,179.00"
+44,Ola,Enioluwa,22,F,Machine Learning,2021-01-01,"£117,897.00"
+45,Okafor,Chike,23,M,Data Analysis,2020-07-11,"£129,687.00"
+46,Chika,Nwosu,23,F,Data Analysis,2021-08-09,"£142,656.00"
+47,Eze,Chinedu,22,M,Data Analysis,2023-07-01,"£156,921.00"
+48,Adaobi,Ekeinde,23,M,Data Analysis,2023-07-09,"£172,614.00"
+49,Yusuf,Ibrahim,22,M,Cyber Security,2005-08-01,"£189,875.00"
+50,Amaka,Azikiwe,23,M,Cyber Security,2023-07-28,"£208,862.00"
+51,Onyeka,Okonkwo,23,F,Cyber Security,2016-07-16,"£229,749.00"
+52,Chioma,Adebayo,22,F,Cyber Security,2022-07-01,"£252,724.00"
+53,Ifeanyi,Ekpo,22,F,Cyber Security,2022-07-01,"£277,996.00"
+54,Ngozi,Abubakar,20,F,Cyber Security,2024-07-01,"£305,795.00"
+55,Abdul,Nasiru,21,F,Cyber Security,2023-07-01,"£336,375.00"
+56,Zainab,Adeyemi,19,F,Cyber Security,2022-07-01,"£370,012.00"
+57,Obinna,Onwuka,25,F,Data Analysis,2023-07-09,"£407,014.00"
+58,Amina,Osagie,40,M,Data Analysis,2005-08-01,"£447,715.00"
+59,Chinonso,Uche,23,M,Data Analysis,2023-07-28,"£492,487.00"
+60,Femi,Abdullahi,22,M,Data Analysis,2023-07-01,"£541,735.00"
+61,Halima,Bakare,23,M,Data Analysis,2022-07-17,"£595,909.00"
+62,Chibuzo,Mohammed,21,M,Data Analysis,2020-09-01,"£655,500.00"
+63,Oluchi,Iwuoha,22,F,Machine Learning,2021-01-31,"£721,050.00"
+64,Emeka,Anikulapo,19,M,Data Analysis,2024-07-19,"£793,155.00"
+65,Hadiza,Ogundipe,18,M,Data Analysis,2022-08-06,"£872,470.00"
+66,Nneka,Nwachukwu,NULL,M,Web Development,2023-08-01,"£959,717.00"
+67,Adeola,Okoro,NULL,M,Web Development,2023-07-12,"£1,055,689.00"
+68,Idris,Ibrahim,23,M,Web Development,2024-08-31,"£1,161,258.00"
+69,Chinyere,Adeyemi,23,M,NULL,2022-10-07,"£1,277,383.00"
+70,Umar,Abdullahi,22,M,Web Development,2024-07-01,"£1,405,122.00"
+71,Nkem,Adebayo,20,M,Web Development,2024-07-21,"£1,545,634.00"
+72,Ayodele,Osagie,22,F,Machine Learning,2021-01-30,"£1,700,197.00"
+73,Chiwendu,Ekpo,21,M,Machine Learning,2020-01-30,"£1,870,217.00"
+74,Fatima,Azikiwe,22,F,Data Analysis,2021-07-01,"£2,057,239.00"
+75,Chukwudi,Ekeinde,19,M,Cyber Security,2022-08-28,"£2,262,963.00"
+76,Kemi,Uche,18,M,Cyber Security,2022-07-06,"£2,489,259.00"
+77,Jide,Bakare,18,M,Cyber Security,2023-09-02,"£2,738,185.00"
+78,Adaobi,Iwuoha,19,M,Cyber Security,2022-08-06,"£3,012,003.00"
+79,Suleiman,Mohammed,23,M,Cyber Security,2020-09-25,"£3,313,204.00"
+80,Ifeoluwa,Anikulapo,23,M,Cyber Security,2023-08-31,"£3,644,524.00"
+81,Rock,Shy,23,M,Data Analysis,1999-02-05,NULL
+82,NULL,NULL,NULL,NULL,NULL,2021-11-09,NULL
