@@ -42,6 +42,15 @@ select
       4 as sort_order
 from amazon_sales
 
+union all
+
+select 'mode' as metric,
+       round(mode() within group (order by price)) as mode_price,
+       round(mode() within group (order by quantity)) as mode_price,
+       round(mode() within group (order by "Total Sales")) as mode_price,
+       5 as sort_order
+from amazon_sales
+
 union all 
 
 select 
@@ -49,7 +58,7 @@ select
       min (price) as price,
       min (quantity) as quantity,
       min ("Total Sales") as total_sales,
-      5 as sort_order
+      6 as sort_order
 from amazon_sales
 
 union all 
@@ -59,7 +68,7 @@ select
       percentile_cont(0.25) within group (order by price) as price,
       percentile_cont(0.25) within group (order by quantity) as price,
       percentile_cont(0.25) within group (order by "Total Sales") as price,
-      6 as sort_order
+      7 as sort_order
 from amazon_sales
 
 union all 
@@ -69,7 +78,7 @@ select
       percentile_cont(0.5) within group (order by price) as price,
       percentile_cont(0.5) within group (order by quantity) as price,
       percentile_cont(0.5) within group (order by "Total Sales") as price,
-      7 as sort_order
+      8 as sort_order
 from amazon_sales
 
 union all 
@@ -79,7 +88,7 @@ select
       percentile_cont(0.75) within group (order by price) as price,
       percentile_cont(0.75) within group (order by quantity) as price,
       percentile_cont(0.75) within group (order by "Total Sales") as price,
-      8 as sort_order
+      9 as sort_order
 from amazon_sales
 
 union all 
@@ -89,10 +98,8 @@ select
       max (price) as price,
       max (quantity) as quantity,
       max ("Total Sales") as total_sales,
-      9 as sort_order
+      10 as sort_order
 from amazon_sales
 order by sort_order) as sorted_data;
-
-
 
 
