@@ -1018,6 +1018,7 @@
       <div class="skill-tags">
         <span class="skill-tag accent">SQL</span>
         <span class="skill-tag accent">Excel</span>
+        <span class="skill-tag accent">Python</span>
         <span class="skill-tag accent">Data Cleaning</span>
         <span class="skill-tag accent">Statistical Analysis</span>
         <span class="skill-tag accent">Trend Analysis</span>
@@ -1119,6 +1120,20 @@
           <span class="project-badge">Tableau</span>
           <span class="project-badge">Calculated Fields</span>
           <span class="project-badge">LOD Expressions</span>
+        </div>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <a href="#" class="project-item" id="project-crypto" onclick="openCryptoAnalysis(event)">
+      <div>
+        <div class="project-title">Automation; Cryptocurrency ETL Pipeline <span class="project-highlight">Python</span></div>
+        <div class="project-desc">Automated a pipeline using Python and PostgreSQL, scheduled by cron, that fetches live cryptocurrency prices from CoinGecko and cleans the data automatically, delivering validated, formatted cryptocurrency data without manual intervention. The SQL stored procedure handles deduplication, null value management, and data standardization every morning at 6:05 AM, eliminating 30 minutes of daily manual work while ensuring consistency and reliability.</div>
+        <div class="project-tech">
+          <span class="project-badge">Python</span>
+          <span class="project-badge">PostgreSQL</span>
+          <span class="project-badge">SQL</span>
+          <span class="project-badge">Cron</span>
         </div>
       </div>
       <div class="project-arrow">↗</div>
@@ -1625,6 +1640,199 @@ Harper Rodriguez | Data Science | NULL | £832.53</pre>
   </div>
 </div>
 
+<!-- CRYPTO ETL MODAL -->
+<div id="crypto-overlay" class="compare-overlay" onclick="if(event.target===this) closeCryptoAnalysis()">
+  <div class="compare-modal">
+    <div class="compare-header">
+      <div>
+        <div class="compare-eyebrow">Automation Project</div>
+        <h3 class="compare-title">Cryptocurrency ETL Pipeline</h3>
+      </div>
+      <button class="compare-close" onclick="closeCryptoAnalysis()" aria-label="Close">×</button>
+    </div>
+    <p class="compare-summary">A fully automated end-to-end ETL pipeline that runs every morning at 6:00 AM and 6:05 AM. The Python script fetches live cryptocurrency prices for 10 major coins (Bitcoin, Ethereum, Tether, Binance Coin, USD Coin, Ripple, Cardano, Solana, Tron, Polkadot) from the CoinGecko API, capturing price, market cap, and 24-hour trading volume. The raw data is inserted into PostgreSQL's crypto_raw table. Five minutes later, a SQL stored procedure automatically cleans and standardizes the data: converting coin names to uppercase, rounding prices to 8 decimals, handling null values with COALESCE, filtering duplicates to keep only the most recent price per coin, and validating data integrity. The cleaned dataset is populated into crypto_clean, eliminating manual intervention entirely and ensuring consistent, error-free data ready for daily analysis.</p>
+    <div class="compare-stats">
+      <div class="compare-stat"><span class="compare-stat-num">10</span><span class="compare-stat-label">cryptocurrencies tracked</span></div>
+      <div class="compare-stat"><span class="compare-stat-num">3</span><span class="compare-stat-label">data points per coin</span></div>
+      <div class="compare-stat"><span class="compare-stat-num">30 min</span><span class="compare-stat-label">daily time saved</span></div>
+    </div>
+    <div class="compare-panels" style="align-items: stretch;">
+      <div class="compare-panel" style="display: flex; flex-direction: column; height: 100%;">
+        <div class="compare-panel-label">Python Script: fetch_crypto_data.py</div>
+        <div class="compare-table-wrap" style="flex: 1; max-height: 500px; overflow-y: auto; border: 1px solid var(--border); border-radius: 4px; background: var(--bg3); padding: 1rem; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #7fe8e2; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word;">import requests
+import psycopg2
+from datetime import datetime
+
+def fetch_crypto_data():
+    """
+    Fetch cryptocurrency data from CoinGecko API
+    """
+    print("🔄 Fetching cryptocurrency data from CoinGecko API...")
+    
+    url = "https://api.coingecko.com/api/v3/simple/price"
+    
+    params = {
+        'ids': 'bitcoin,ethereum,tether,binancecoin,usd-coin,ripple,cardano,solana,tron,polkadot',
+        'vs_currencies': 'usd',
+        'include_market_cap': 'true',
+        'include_24hr_vol': 'true'
+    }
+    
+    try:
+        response = requests.get(url, params=params, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+        
+        print(f"✅ Successfully fetched data for: {list(data.keys())}")
+        return data
+        
+    except Exception as e:
+        print(f"❌ Error fetching data: {e}")
+        return None
+
+
+def insert_raw_data(data):
+    """
+    Connect to PostgreSQL and insert raw cryptocurrency data
+    """
+    if not data:
+        print("❌ No data to insert")
+        return
+    
+    try:
+        conn = psycopg2.connect(
+            host="localhost",
+            database="postgres",
+            user="postgres",
+            password="0989!!"
+        )
+        
+        cursor = conn.cursor()
+        
+        print("💾 Inserting data into PostgreSQL...")
+        
+        for coin, prices in data.items():
+            cursor.execute(
+                """
+                INSERT INTO crypto_raw (coin_name, price, market_cap, volume)
+                VALUES (%s, %s, %s, %s)
+                """,
+                (
+                    coin,
+                    prices.get('usd'),
+                    prices.get('usd_market_cap'),
+                    prices.get('usd_24h_vol')
+                )
+            )
+        
+        conn.commit()
+        
+        print(f"✅ Successfully inserted {len(data)} coins into crypto_raw")
+        
+        cursor.execute("SELECT COUNT(*) FROM crypto_raw")
+        total_records = cursor.fetchone()[0]
+        print(f"📊 Total records in crypto_raw: {total_records}")
+        
+        cursor.close()
+        conn.close()
+        
+    except Exception as e:
+        print(f"❌ Database error: {e}")
+
+
+if __name__ == "__main__":
+    print("=" * 50)
+    print("CRYPTOCURRENCY DATA AUTOMATION")
+    print(f"Started at: {datetime.now()}")
+    print("=" * 50)
+    
+    crypto_data = fetch_crypto_data()
+    
+    if crypto_data:
+        insert_raw_data(crypto_data)
+    
+    print("=" * 50)
+    print(f"Completed at: {datetime.now()}")
+    print("=" * 50)
+        </div>
+      </div>
+      <div class="compare-panel" style="display: flex; flex-direction: column; height: 100%;">
+        <div class="compare-panel-label">SQL Stored Procedure: clean_cryptocurrency_data()</div>
+        <div class="compare-table-wrap" style="flex: 1; max-height: 500px; overflow-y: auto; border: 1px solid var(--border); border-radius: 4px; background: var(--bg3); padding: 1rem; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #b8aeff; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word;">CREATE OR REPLACE PROCEDURE clean_cryptocurrency_data()
+LANGUAGE plpgsql
+AS $$
+DECLARE
+  v_records_cleaned INT;
+BEGIN
+  RAISE NOTICE '====================================';
+  RAISE NOTICE 'Starting cryptocurrency data cleaning';
+  RAISE NOTICE 'Time: %', NOW();
+  RAISE NOTICE '====================================';
+  
+  DELETE FROM crypto_clean;
+  
+  INSERT INTO crypto_clean (coin_name, price_usd, market_cap_usd, volume_usd)
+  SELECT 
+    UPPER(coin_name) as coin_name,
+    ROUND(price, 8) as price_usd,
+    COALESCE(market_cap, 0) as market_cap_usd,
+    COALESCE(volume, 0) as volume_usd
+    
+  FROM crypto_raw
+  
+  WHERE (coin_name, fetched_at) IN (
+    SELECT coin_name, MAX(fetched_at)
+    FROM crypto_raw
+    GROUP BY coin_name
+  )
+  
+  AND price IS NOT NULL
+  AND coin_name IS NOT NULL
+  AND price > 0;
+  
+  GET DIAGNOSTICS v_records_cleaned = ROW_COUNT;
+  
+  RAISE NOTICE '====================================';
+  RAISE NOTICE 'Cleaning completed successfully!';
+  RAISE NOTICE 'Records cleaned: %', v_records_cleaned;
+  RAISE NOTICE 'Time: %', NOW();
+  RAISE NOTICE '====================================';
+  
+END;
+$$;
+
+
+call clean_cryptocurrency_data();
+
+
+select *
+from crypto_clean
+
+
+select '===RAW DATA==' as section; 
+SELECT * FROM crypto_raw ORDER BY fetched_at;
+
+SELECT '=== CLEAN DATA ===' as section;
+SELECT * FROM crypto_clean;
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem; padding:1.5rem; background:var(--bg3); border:1px solid var(--border); border-radius:6px;">
+      <div class="compare-panel-label" style="margin-bottom:1rem;">Cron Schedule</div>
+      <div style="font-family: 'DM Mono', monospace; font-size: 0.9rem; color: var(--text2); line-height: 1.8;">
+        <div style="margin-bottom:1rem;"><span style="color:var(--accent);">0 6 * * *</span> /usr/bin/python3 /path/to/fetch_crypto_data.py</div>
+        <div><span style="color:var(--accent);">5 6 * * *</span> psql -U postgres -d postgres -f /path/to/clean_crypto.sql</div>
+        <div style="margin-top:1.5rem; color:var(--text3); font-size:0.85rem;">→ Python script runs at 6:00 AM daily<br/>→ SQL cleaning procedure runs at 6:05 AM daily</div>
+      </div>
+    </div>
+    <div class="compare-footer" style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; gap:1rem;">
+      <a href="data/fetch_crypto_data.py" class="compare-link" download>↓ Python Script (fetch_crypto_data.py)</a>
+      <a href="data/cleaning_crypto.sql" class="compare-link" download>↓ SQL Procedure (cleaning_crypto.sql)</a>
+      <a href="data/crontab_schedule.png" class="compare-link" download>↓ Crontab Screenshot</a>
+    </div>
+  </div>
+</div>
+
 <script>
   function openCompare(e) {
     e.preventDefault();
@@ -1653,11 +1861,21 @@ Harper Rodriguez | Data Science | NULL | £832.53</pre>
     document.getElementById('tableau-overlay').classList.remove('open');
     document.body.style.overflow = '';
   }
+  function openCryptoAnalysis(e) {
+    e.preventDefault();
+    document.getElementById('crypto-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCryptoAnalysis() {
+    document.getElementById('crypto-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       closeCompare();
       closeAmazonAnalysis();
       closeTableauAnalysis();
+      closeCryptoAnalysis();
     }
   });
   (function() {
