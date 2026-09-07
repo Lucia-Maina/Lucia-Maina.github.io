@@ -1817,18 +1817,99 @@ SELECT * FROM crypto_clean;
         </div>
       </div>
     </div>
+
     <div style="margin-top:2.5rem; padding:1.5rem; background:var(--bg3); border:1px solid var(--border); border-radius:6px;">
-      <div class="compare-panel-label" style="margin-bottom:1rem;">Cron Schedule</div>
-      <div style="font-family: 'DM Mono', monospace; font-size: 0.9rem; color: var(--text2); line-height: 1.8;">
-        <div style="margin-bottom:1rem;"><span style="color:var(--accent);">0 6 * * *</span> /usr/bin/python3 /path/to/fetch_crypto_data.py</div>
-        <div><span style="color:var(--accent);">5 6 * * *</span> psql -U postgres -d postgres -f /path/to/clean_crypto.sql</div>
-        <div style="margin-top:1.5rem; color:var(--text3); font-size:0.85rem;">→ Python script runs at 6:00 AM daily<br/>→ SQL cleaning procedure runs at 6:05 AM daily</div>
+      <div class="compare-panel-label" style="margin-bottom:1rem; text-align:center;">Current Cryptocurrency Dataset</div>
+      <div style="overflow-x: auto; max-height: 400px; overflow-y: auto; border: 1px solid var(--border); border-radius: 4px; background: var(--bg2);">
+        <table style="width:100%; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--text2); border-collapse: collapse;">
+          <thead style="background: var(--bg3); position: sticky; top: 0;">
+            <tr>
+              <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); color: var(--accent);">coin_name</th>
+              <th style="padding: 0.75rem; text-align: right; border-bottom: 1px solid var(--border); color: var(--accent);">price_usd</th>
+              <th style="padding: 0.75rem; text-align: right; border-bottom: 1px solid var(--border); color: var(--accent);">market_cap_usd</th>
+              <th style="padding: 0.75rem; text-align: right; border-bottom: 1px solid var(--border); color: var(--accent);">volume_usd</th>
+              <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); color: var(--accent);">cleaned_at</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem 0.75rem;">BITCOIN</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">79,453.00</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">1,595,328,825,487</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">22,845,190,942</td>
+              <td style="padding: 0.5rem 0.75rem; color: var(--text3); font-size: 0.75rem;">2026-09-07 09:20:56</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem 0.75rem;">ETHEREUM</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">2,490.38</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">303,866,711,765</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">10,758,442,019</td>
+              <td style="padding: 0.5rem 0.75rem; color: var(--text3); font-size: 0.75rem;">2026-09-07 09:20:56</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem 0.75rem;">TETHER</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">0.99986</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">183,385,073,630</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">47,030,195,534</td>
+              <td style="padding: 0.5rem 0.75rem; color: var(--text3); font-size: 0.75rem;">2026-09-07 09:20:56</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem 0.75rem;">BINANCECOIN</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">744.84</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">99,173,685,968</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">1,073,602,943</td>
+              <td style="padding: 0.5rem 0.75rem; color: var(--text3); font-size: 0.75rem;">2026-09-07 09:20:56</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem 0.75rem;">USD-COIN</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">0.99989</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">74,530,794,889</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">11,093,109,702</td>
+              <td style="padding: 0.5rem 0.75rem; color: var(--text3); font-size: 0.75rem;">2026-09-07 09:20:56</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem 0.75rem;">RIPPLE</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">1.40</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">87,813,849,886</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">1,750,466,556</td>
+              <td style="padding: 0.5rem 0.75rem; color: var(--text3); font-size: 0.75rem;">2026-09-07 09:20:56</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem 0.75rem;">CARDANO</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">0.21704</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">8,140,426,381</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">420,436,144</td>
+              <td style="padding: 0.5rem 0.75rem; color: var(--text3); font-size: 0.75rem;">2026-09-07 09:20:56</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem 0.75rem;">SOLANA</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">104.48</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">61,233,350,421</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">3,766,134,051</td>
+              <td style="padding: 0.5rem 0.75rem; color: var(--text3); font-size: 0.75rem;">2026-09-07 09:20:56</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem 0.75rem;">TRON</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">0.33651</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">31,944,514,518</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">266,284,942</td>
+              <td style="padding: 0.5rem 0.75rem; color: var(--text3); font-size: 0.75rem;">2026-09-07 09:20:56</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5rem 0.75rem;">POLKADOT</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">0.96641</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">1,645,744,707</td>
+              <td style="padding: 0.5rem 0.75rem; text-align: right;">208,790,186</td>
+              <td style="padding: 0.5rem 0.75rem; color: var(--text3); font-size: 0.75rem;">2026-09-07 09:20:56</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="compare-footer" style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; gap:1rem;">
+    <div class="compare-footer" style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
       <a href="data/fetch_crypto_data.py" class="compare-link" download>↓ Python Script (fetch_crypto_data.py)</a>
       <a href="data/cleaning_crypto.sql" class="compare-link" download>↓ SQL Procedure (cleaning_crypto.sql)</a>
-      <a href="data/crontab_schedule.png" class="compare-link" download>↓ Crontab Screenshot</a>
+      <a href="data/current_crypto_dataset.csv" class="compare-link" download>↓ Full Dataset (current_crypto_dataset.csv)</a>
     </div>
   </div>
 </div>
