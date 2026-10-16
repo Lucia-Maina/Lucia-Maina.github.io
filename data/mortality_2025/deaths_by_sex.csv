@@ -1,0 +1,13 @@
+"sex","rank","cause","deaths","pct_of_deaths"
+Female,1,Dementia and Alzheimers disease,45874,16.5
+Female,2,Ischaemic heart diseases,17158,6.2
+Female,3,Cerebrovascular diseases,15859,5.7
+Female,4,Chronic lower respiratory diseases,15332,5.5
+Female,5,"Symptoms, signs and ill-defined conditions",13217,4.7
+Female,6,"Malignant neoplasm of trachea, bronchus and lung",13156,4.7
+Male,1,Ischaemic heart diseases,35481,12.2
+Male,2,Dementia and Alzheimers disease,26398,9.1
+Male,3,Chronic lower respiratory diseases,15088,5.2
+Male,4,"Malignant neoplasm of trachea, bronchus and lung",14315,4.9
+Male,5,Cerebrovascular diseases,13482,4.6
+Male,6,Influenza and pneumonia,11997,4.1
