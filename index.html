@@ -940,6 +940,18 @@
     transition: background 0.2s;
   }
   .compare-link:hover { background: var(--bg3); }
+  /* --- FILE FOLDER (expandable downloads) --- */
+  .file-folder { flex: 1 1 100%; }
+  .file-folder summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.05em; color: var(--accent); border: 1px solid var(--border2); padding: 0.5rem 1rem; border-radius: 6px; transition: background 0.2s; }
+  .file-folder summary::-webkit-details-marker { display: none; }
+  .file-folder summary:hover { background: var(--bg3); }
+  .file-folder .folder-chevron { display: inline-block; transition: transform 0.2s; }
+  .file-folder[open] .folder-chevron { transform: rotate(90deg); }
+  .file-folder .folder-files { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.6rem; margin-top: 0.8rem; }
+  .file-folder .folder-files a { display: block; text-decoration: none; font-family: 'DM Mono', monospace; letter-spacing: 0.05em; padding: 0.5rem 1rem; border: 1px solid var(--border2); border-radius: 6px; transition: background 0.2s; }
+  .file-folder .folder-files a:hover { background: var(--bg3); }
+  .file-folder .file-name { display: block; font-size: 11px; color: var(--accent); word-break: break-all; }
+  .file-folder .file-desc { display: block; font-size: 11px; color: var(--text2); margin-top: 0.2rem; }
   /* Dashboard image container */
   .dashboard-img-container {
     border: 1px solid var(--border);
@@ -1811,6 +1823,18 @@ Harper Rodriguez | Data Science | NULL | £832.53</pre>
     <div class="compare-footer" style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; gap:1rem;">
       <a href="https://public.tableau.com/app/profile/lucia.maina/viz/UK_mortality_2025/Mortality" target="_blank" rel="noopener noreferrer" class="compare-link">↗ View Interactive Dashboard</a>
       <a href="data/annualdeathregistrations2025.xlsx" class="compare-link" download>↓ Dataset (ONS, annualdeathregistrations2025.xlsx)</a>
+      <details class="file-folder">
+        <summary><span class="folder-chevron">▸</span><span>Custom files built in DBeaver for the visualization (7 files)</span></summary>
+        <div class="folder-files">
+          <a href="data/mortality_2025/leading_causes.csv" download><span class="file-name">leading_causes.csv</span><span class="file-desc">Leading causes of death, 2025</span></a>
+          <a href="data/mortality_2025/deaths_by_sex.csv" download><span class="file-name">deaths_by_sex.csv</span><span class="file-desc">Leading causes of death, females vs males</span></a>
+          <a href="data/mortality_2025/mean_death_age.csv" download><span class="file-name">mean_death_age.csv</span><span class="file-desc">Mean age at death by sex</span></a>
+          <a href="data/mortality_2025/2016-2025_timeline.csv" download><span class="file-name">2016-2025_timeline.csv</span><span class="file-desc">Annual deaths, 2016 to 2025</span></a>
+          <a href="data/mortality_2025/top_injury_related_deaths.csv" download><span class="file-name">top_injury_related_deaths.csv</span><span class="file-desc">Top injury-related causes of death</span></a>
+          <a href="data/mortality_2025/deaths_by_region.csv" download><span class="file-name">deaths_by_region.csv</span><span class="file-desc">Deaths in England, Wales and non-residents</span></a>
+          <a href="data/mortality_2025/deaths_by_age_group.csv" download><span class="file-name">deaths_by_age_group.csv</span><span class="file-desc">Leading causes of death by age group</span></a>
+        </div>
+      </details>
     </div>
   </div>
 </div>
