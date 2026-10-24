@@ -2435,19 +2435,5 @@ SELECT * FROM crypto_clean;
     });
   });
 </script>
-
-<script>
-  // Open the page at the top, then glide down and land on the "Selected work" section
-  (function () {
-    var target = document.getElementById('projects');
-    if (!target) return;
-    function goToWork() {
-      if (window.scrollY > 50) return;
-      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-    }
-    window.addEventListener('load', function () { setTimeout(goToWork, 700); });
-  })();
-</script>
 </body>
 </html>
